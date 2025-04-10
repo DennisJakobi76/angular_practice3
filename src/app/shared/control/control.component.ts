@@ -9,6 +9,8 @@ import {
   ContentChild,
   contentChild,
   AfterContentInit,
+  afterRender,
+  afterNextRender,
 } from '@angular/core';
 
 @Component({
@@ -39,6 +41,11 @@ export class ControlComponent implements AfterContentInit {
     console.log('Clicked!');
     console.log(this.el);
     console.log(this.control());
+  }
+
+  constructor() {
+    afterRender(() => console.log('AFTER RENDER'));
+    afterNextRender(() => console.log('AFTER NEXT RENDER'));
   }
 
   ngAfterContentInit(): void {
